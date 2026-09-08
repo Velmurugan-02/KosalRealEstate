@@ -2,6 +2,7 @@ package com.kosal.crm.repository;
 
 import com.kosal.crm.entity.Booking;
 import com.kosal.crm.entity.BookingStatus;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

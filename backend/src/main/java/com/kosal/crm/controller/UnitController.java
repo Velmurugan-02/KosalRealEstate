@@ -38,8 +38,7 @@ public class UnitController {
             @PathVariable Long buildingId) {
 
         return ResponseEntity.ok(
-                unitService.getUnitsByBuilding(
-                        buildingId));
+                unitService.getUnitsByBuilding(buildingId));
     }
 
     @GetMapping("/buildings/{buildingId}/units/available")
@@ -47,8 +46,7 @@ public class UnitController {
             @PathVariable Long buildingId) {
 
         return ResponseEntity.ok(
-                unitService.getAvailableUnits(
-                        buildingId));
+                unitService.getUnitsByBuilding(buildingId));
     }
 
     @GetMapping("/units/{id}")
@@ -65,9 +63,7 @@ public class UnitController {
             @RequestBody Unit unit) {
 
         return ResponseEntity.ok(
-                unitService.updateUnit(
-                        id,
-                        unit));
+                unitService.updateUnit(id, unit));
     }
 
     @DeleteMapping("/units/{id}")

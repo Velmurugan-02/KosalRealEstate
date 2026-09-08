@@ -1,6 +1,7 @@
 package com.kosal.crm.service.impl;
 
 import com.kosal.crm.entity.Project;
+import com.kosal.crm.exception.ResourceNotFoundException;
 import com.kosal.crm.repository.ProjectRepository;
 import com.kosal.crm.service.ProjectService;
 
@@ -30,9 +31,8 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Project getProjectById(Long id) {
-
         return projectRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException(
+                .orElseThrow(() -> new ResourceNotFoundException(
                         "Project not found with id: " + id));
     }
 
