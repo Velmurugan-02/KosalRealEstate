@@ -12,7 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/leads")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://kosal-real-estate.vercel.app"
+})
 public class LeadActivityController {
 
     private final LeadActivityService activityService;
