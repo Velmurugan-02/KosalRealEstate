@@ -12,17 +12,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import org.springframework.beans.factory.annotation.Value;
 
 @Service
 public class JwtService {
-
-    private static final String SECRET_KEY = "KosalCRMSecretKeyForJwtAuthentication2026Secure";
+    @Value("${jwt.secret}")
+    private String secretKey;
 
     private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10 hours
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(
-                SECRET_KEY.getBytes(StandardCharsets.UTF_8));
+                secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
     public String generateToken(UserDetails userDetails) {
