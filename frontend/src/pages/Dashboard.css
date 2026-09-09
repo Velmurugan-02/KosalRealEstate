@@ -1,0 +1,494 @@
+/* ==========================================================================
+   DASHBOARD STYLES - Exact match to RealEstateDesign/dashboard.png
+   ========================================================================== */
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Role Indicator Banner */
+.dashboard-role-banner {
+  margin-bottom: -4px;
+}
+
+.role-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-size: 13px;
+  animation: fadeIn 0.3s ease;
+}
+
+.role-banner.admin-banner {
+  background: linear-gradient(90deg, #eff6ff 0%, #ffffff 100%);
+  border-color: #bfdbfe;
+  color: #1e3a8a;
+}
+
+.role-banner.sales-banner {
+  background: linear-gradient(90deg, #fff7ed 0%, #ffffff 100%);
+  border-color: #fed7aa;
+  color: #9a3412;
+}
+
+.role-tag {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.role-tag.admin-tag {
+  background-color: #1e40af;
+  color: #ffffff;
+}
+
+.role-tag.sales-tag {
+  background-color: #d96b00;
+  color: #ffffff;
+}
+
+.role-banner-text {
+  color: inherit;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   TOP METRICS GRID (4 CARDS)
+   ========================================================================== */
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.metric-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.metric-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+.metric-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-icon-box.yellow {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.metric-icon-box.blue {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.metric-icon-box.green {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.metric-icon-box.orange {
+  background-color: #ffedd5;
+  color: #ea580c;
+}
+
+.metric-main-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.metric-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.metric-badge.green {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.metric-badge.yellow {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.metric-badge.orange {
+  background-color: #ffedd5;
+  color: #c2410c;
+}
+
+.metric-subtitle {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   TWO-COLUMN DASHBOARD ROWS (2/3 + 1/3)
+   ========================================================================== */
+
+.dashboard-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* Pipeline Stage Funnel Card */
+.funnel-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.funnel-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.view-details-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.view-details-link:hover {
+  text-decoration: underline;
+}
+
+.funnel-stages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.funnel-stage-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 60px;
+  align-items: center;
+  gap: 16px;
+}
+
+.stage-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.stage-bar-track {
+  width: 100%;
+  height: 14px;
+  background-color: #f1f5f9;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.stage-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.6s ease;
+}
+
+.stage-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  text-align: right;
+}
+
+/* Funnel Bar Colors (from dashboard.png) */
+.bar-new {
+  background-color: #64748b;
+}
+
+.bar-contacted {
+  background-color: #3b82f6;
+}
+
+.bar-site-visit {
+  background-color: #f59e0b;
+}
+
+.bar-interested {
+  background-color: #d96b00;
+}
+
+.bar-negotiation {
+  background-color: #ef4444;
+}
+
+.bar-booked {
+  background-color: #10b981;
+}
+
+/* Recent Active Updates Card */
+.updates-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.updates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.update-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.update-avatar-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.update-avatar-icon.check {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.update-avatar-icon.user {
+  background-color: #ffedd5;
+  color: #ea580c;
+}
+
+.update-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.update-user-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.update-description {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.update-time {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* Upcoming Follow-ups Table Card */
+.followups-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-heading {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+.followups-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.followups-table th {
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.followups-table td {
+  padding: 14px 14px;
+  font-size: 13px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.lead-name-bold {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.priority-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.priority-badge.high {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.priority-badge.medium {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.priority-badge.low {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+/* Monthly Bookings Trend Chart Card */
+.trend-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 200px;
+  padding: 20px 10px 0 10px;
+  gap: 12px;
+}
+
+.chart-bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.trend-bar {
+  width: 24px;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.5s ease;
+}
+
+.trend-bar.muted {
+  background-color: #94a3b8;
+}
+
+.trend-bar.orange {
+  background-color: var(--primary);
+}
+
+.trend-bar.green {
+  background-color: #10b981;
+}
+
+.chart-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dashboard-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .funnel-stage-row {
+    grid-template-columns: 120px 1fr 40px;
+  }
+}

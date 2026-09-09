@@ -1,0 +1,306 @@
+/* ==========================================================================
+   BOOKING FLOW STYLES - Exact match to RealEstateDesign/booking-flow.png
+   ========================================================================== */
+
+.booking-flow-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 1. Top Warning Banner */
+.booking-warning-banner {
+  background-color: #fef9c3;
+  border: 1px solid #fef08a;
+  border-radius: 8px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #854d0e;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.warning-icon {
+  color: #ca8a04;
+  flex-shrink: 0;
+}
+
+/* 2. Three-Step Stepper */
+.booking-stepper-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.booking-step-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.booking-step-card.completed {
+  border-color: #86efac;
+}
+
+.booking-step-card.active {
+  background-color: #fef3c7;
+  border-color: #f59e0b;
+  color: #0f172a;
+}
+
+.step-num-bubble {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.step-num-bubble.green {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.step-num-bubble.orange {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.step-num-bubble.gray {
+  background-color: #e2e8f0;
+  color: #64748b;
+}
+
+/* 3. Two-Column Main Content (1:1) */
+.booking-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Left Card: Booking Summary */
+.booking-summary-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+.summary-hero-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.summary-thumbnail {
+  width: 64px;
+  height: 52px;
+  border-radius: 6px;
+  background-color: #0b132b;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.summary-prop-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.summary-prop-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.summary-prop-sub {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.summary-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.summary-specs-table td {
+  padding: 12px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.summary-specs-table td:first-child {
+  color: #64748b;
+}
+
+.summary-specs-table td:last-child {
+  text-align: right;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Right Card: Select Customer & Plan */
+.booking-form-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-customer-box {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.customer-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.customer-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.customer-phone {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.customer-badge {
+  background-color: #fef3c7;
+  color: #b45309;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+.plan-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.plan-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.plan-select,
+.plan-date-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0f172a;
+  background-color: #ffffff;
+  outline: none;
+  font-family: inherit;
+}
+
+.plan-select:focus,
+.plan-date-input:focus {
+  border-color: var(--primary);
+}
+
+.terms-agreement-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 24px 0;
+  font-size: 13px;
+  color: #334155;
+}
+
+.terms-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.confirm-lock-btn {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(217, 107, 0, 0.25);
+  text-align: center;
+}
+
+.confirm-lock-btn:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.confirm-lock-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.conflict-error-box {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 960px) {
+  .booking-stepper-row {
+    grid-template-columns: 1fr;
+  }
+  .booking-content-grid {
+    grid-template-columns: 1fr;
+  }
+}

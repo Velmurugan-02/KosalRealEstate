@@ -1,0 +1,461 @@
+/* ==========================================================================
+   LEAD DETAILS STYLES - Exact match to RealEstateDesign/lead-detail.png
+   ========================================================================== */
+
+.lead-details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.details-main-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.details-side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 1. Profile Card */
+.lead-profile-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.lead-profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.lead-identity-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lead-large-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #0b132b;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lead-identity-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lead-identity-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lead-display-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.lead-id-text {
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.lead-contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-round-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.contact-round-btn:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.lead-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.lead-field-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-label-muted {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+.field-value-strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* 2. Stage Pipeline Card */
+.pipeline-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.pipeline-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 18px;
+}
+
+.pipeline-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.pipeline-step-btn {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.pipeline-step-btn.passed {
+  background-color: #0b132b;
+  color: #ffffff;
+}
+
+.pipeline-step-btn.active {
+  background-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(217, 107, 0, 0.3);
+}
+
+.pipeline-step-btn.upcoming {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+}
+
+/* 3. Notes & Activity Timeline Card */
+.timeline-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.timeline-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.timeline-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.timeline-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.timeline-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #334155;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.timeline-entry-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.timeline-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timeline-author-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-author-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.timeline-author-role {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.timeline-timestamp {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.timeline-activity-tag {
+  align-self: flex-start;
+  background-color: #fef3c7;
+  color: #b45309;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.timeline-note-text {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* Add Note Input Area */
+.add-note-box {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-note-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  resize: vertical;
+  min-height: 70px;
+  font-family: inherit;
+}
+
+.add-note-textarea:focus {
+  border-color: var(--primary);
+}
+
+.add-note-btn {
+  align-self: flex-end;
+  background-color: #0b132b;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.add-note-btn:hover {
+  background-color: #1e293b;
+}
+
+/* Side Column: Quick Actions Card */
+.quick-actions-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.quick-actions-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+.action-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.action-form-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.action-form-select,
+.action-form-input {
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+}
+
+.action-form-select:focus,
+.action-form-input:focus {
+  border-color: var(--primary);
+}
+
+.update-lead-btn {
+  width: 100%;
+  padding: 12px 18px;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(217, 107, 0, 0.25);
+  transition: all var(--transition-fast);
+  margin-top: 6px;
+}
+
+.update-lead-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Side Column: Linked Properties Interest Card */
+.interest-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.interest-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.interest-property-box {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.interest-property-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.interest-property-img-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background-color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.interest-property-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.interest-property-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.interest-property-unit {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.interest-property-price {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+  .lead-details-grid {
+    grid-template-columns: 1fr;
+  }
+}

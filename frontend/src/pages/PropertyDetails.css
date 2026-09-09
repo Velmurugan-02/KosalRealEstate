@@ -1,0 +1,597 @@
+/* ==========================================================================
+   PROPERTY DETAILS STYLES - Exact match to RealEstateDesign/property-detail.png
+   ========================================================================== */
+
+.property-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Gallery Section (Main Viewport + 3 Interactive Thumbnails) */
+.gallery-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 14px;
+  height: 340px;
+  max-height: 340px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.gallery-main-viewport {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: #070d19;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ambient blurred backdrop for luxury natural framing of portrait & landscape photos */
+.gallery-main-bg-blur {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  bottom: -24px;
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
+  object-fit: cover;
+  filter: blur(30px) brightness(0.4);
+  transform: scale(1.15);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.gallery-main-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: opacity 0.3s ease, transform 0.35s ease;
+}
+
+/* Perfect fit: entire photo (villa pool, full bedroom, etc.) is 100% visible */
+.gallery-main-img.contain {
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* Full frame: edges filled, centered on key architectural subject */
+.gallery-main-img.cover {
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.gallery-main-viewport:hover .gallery-main-img {
+  transform: scale(1.015);
+}
+
+/* Navigation Arrows on Main Viewport */
+.gallery-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--transition-fast);
+  z-index: 3;
+  user-select: none;
+}
+
+.gallery-main-viewport:hover .gallery-nav-btn {
+  opacity: 1;
+}
+
+.gallery-nav-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-nav-btn.prev {
+  left: 14px;
+}
+
+.gallery-nav-btn.next {
+  right: 14px;
+}
+
+/* Glassmorphic Photo Information Badge */
+.gallery-counter-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: #f8fafc;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-counter-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+/* Framing / Fit Mode Toggle Button */
+.gallery-fit-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: #f8fafc;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  z-index: 3;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gallery-fit-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.gallery-thumbnails-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+
+.gallery-thumbnail-box {
+  flex: 1 1 0;
+  min-height: 0;
+  min-width: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: #1e293b;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.gallery-thumbnail-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-thumb-img {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.gallery-thumbnail-box:hover .gallery-thumb-img {
+  transform: scale(1.06);
+}
+
+.gallery-thumb-tag {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  transition: background var(--transition-fast);
+}
+
+.gallery-thumbnail-box:hover .gallery-thumb-tag {
+  background: rgba(217, 107, 0, 0.9);
+}
+
+/* 2-Column Details Body (2/3 Main + 1/3 Side) */
+.property-body-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.prop-main-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.prop-side-action-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Specs Card */
+.specs-detail-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+}
+
+.specs-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 24px;
+}
+
+.specs-keyvalue-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+}
+
+.spec-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-entry-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+.spec-entry-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Pricing Card */
+.pricing-structure-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+}
+
+.pricing-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+.pricing-rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.pricing-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #475569;
+}
+
+.pricing-row-val {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.total-price-banner {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.total-price-label {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #0f172a;
+}
+
+.total-price-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Side Column: Availability & Action */
+.action-box-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.action-status-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+}
+
+.status-banner-pill {
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.status-banner-pill.available {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-banner-pill.reserved {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.status-banner-pill.booked {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.book-unit-btn {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 10px rgba(217, 107, 0, 0.25);
+  text-align: center;
+}
+
+.book-unit-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Side Column: Recent Unit Transactions */
+.transactions-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.transactions-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.transaction-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.transaction-title-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.transaction-desc-text {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.transaction-status-tag {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS FOR PROPERTY DETAILS
+   ========================================================================== */
+
+/* Laptops & Compact Desktops (1025px - 1280px) */
+@media (max-width: 1280px) {
+  .gallery-layout-grid {
+    height: 270px;
+    max-height: 270px;
+    grid-template-columns: 1fr 220px;
+    gap: 12px;
+  }
+
+  .gallery-thumbnails-column {
+    gap: 8px;
+  }
+}
+
+/* Medium Tablets & Small Laptops (769px - 1024px) */
+@media (max-width: 1024px) {
+  .gallery-layout-grid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+    gap: 10px;
+  }
+
+  .gallery-main-viewport {
+    height: 250px;
+    width: 100%;
+  }
+
+  .gallery-nav-btn {
+    opacity: 0.9;
+  }
+
+  .gallery-thumbnails-column {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 78px;
+    max-height: 78px;
+    min-height: 0;
+  }
+
+  .property-body-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Mobile Devices (< 768px) */
+@media (max-width: 768px) {
+  .gallery-layout-grid {
+    gap: 8px;
+  }
+
+  .gallery-main-viewport {
+    height: 210px;
+    max-height: 210px;
+    border-radius: var(--radius-md);
+  }
+
+  .gallery-nav-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    opacity: 0.9;
+  }
+
+  .gallery-nav-btn.prev {
+    left: 8px;
+  }
+
+  .gallery-nav-btn.next {
+    right: 8px;
+  }
+
+  .gallery-counter-badge {
+    bottom: 8px;
+    left: 8px;
+    font-size: 10.5px;
+    padding: 4px 10px;
+  }
+
+  .gallery-thumbnails-column {
+    gap: 8px;
+    height: 64px;
+    max-height: 64px;
+  }
+
+  .gallery-thumb-tag {
+    font-size: 9px;
+    padding: 2px 5px;
+    bottom: 4px;
+    left: 4px;
+  }
+
+  .specs-detail-card,
+  .pricing-structure-card,
+  .action-box-card,
+  .transactions-card {
+    padding: 20px;
+  }
+
+  .specs-keyvalue-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+  }
+
+  .total-price-banner {
+    padding: 12px 16px;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 480px) {
+  .gallery-main-viewport {
+    height: 180px;
+    max-height: 180px;
+  }
+
+  .gallery-thumbnails-column {
+    height: 52px;
+    max-height: 52px;
+  }
+
+  .gallery-thumb-tag {
+    display: none; /* Hide tags on tiny screens so full thumbnail photo is visible */
+  }
+
+  .specs-keyvalue-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
