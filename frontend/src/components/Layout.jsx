@@ -11,6 +11,8 @@ import {
   ChevronDown,
   LogOut,
   User as UserIcon,
+  Menu,
+  X,
 } from 'lucide-react';
 import { useAuth } from '../context/useAuth';
 import './Layout.css';
@@ -20,6 +22,7 @@ function Layout() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   // Close dropdown on click outside
@@ -34,6 +37,13 @@ function Layout() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Auto-close mobile drawer when location pathname changes (React recommended pattern)
+  const [prevPathname, setPrevPathname] = useState(location.pathname);
+  if (prevPathname !== location.pathname) {
+    setPrevPathname(location.pathname);
+    setMobileSidebarOpen(false);
+  }
 
   // Compute dynamic clickable breadcrumbs based on route
   const getBreadcrumbs = () => {
@@ -90,21 +100,42 @@ function Layout() {
 
   return (
     <div className="app-layout-container">
+      {/* Mobile Drawer Backdrop */}
+      {mobileSidebarOpen && (
+        <div
+          className="mobile-sidebar-backdrop"
+          onClick={() => setMobileSidebarOpen(false)}
+          aria-label="Close navigation menu"
+        />
+      )}
+
       {/* Sidebar matching kosal-sidebar.png */}
-      <aside className="app-sidebar">
+      <aside className={`app-sidebar ${mobileSidebarOpen ? 'mobile-open' : ''}`}>
         {/* Brand Header */}
         <div className="sidebar-header">
-          <div className="sidebar-logo-icon">K</div>
-          <div className="sidebar-brand-text">
-            <span className="sidebar-brand-title">KOSAL</span>
-            <span className="sidebar-brand-subtitle">REAL ESTATE</span>
+          <div className="sidebar-brand-group">
+            <div className="sidebar-logo-icon">K</div>
+            <div className="sidebar-brand-text">
+              <span className="sidebar-brand-title">KOSAL</span>
+              <span className="sidebar-brand-subtitle">REAL ESTATE</span>
+            </div>
           </div>
+          <button
+            type="button"
+            className="sidebar-close-btn"
+            onClick={() => setMobileSidebarOpen(false)}
+            aria-label="Close navigation menu"
+            title="Close Menu"
+          >
+            <X size={20} />
+          </button>
         </div>
 
         {/* Navigation Items */}
         <nav className="sidebar-navigation">
           <NavLink
             to="/dashboard"
+            onClick={() => setMobileSidebarOpen(false)}
             className={({ isActive }) =>
               `sidebar-nav-item ${isActive ? 'active' : ''}`
             }
@@ -115,6 +146,7 @@ function Layout() {
 
           <NavLink
             to="/leads"
+            onClick={() => setMobileSidebarOpen(false)}
             className={({ isActive }) =>
               `sidebar-nav-item ${isActive ? 'active' : ''}`
             }
@@ -125,6 +157,7 @@ function Layout() {
 
           <NavLink
             to="/properties"
+            onClick={() => setMobileSidebarOpen(false)}
             className={({ isActive }) =>
               `sidebar-nav-item ${isActive ? 'active' : ''}`
             }
@@ -135,6 +168,7 @@ function Layout() {
 
           <NavLink
             to="/bookings"
+            onClick={() => setMobileSidebarOpen(false)}
             className={({ isActive }) =>
               `sidebar-nav-item ${isActive ? 'active' : ''}`
             }
@@ -145,6 +179,7 @@ function Layout() {
 
           <NavLink
             to="/settings"
+            onClick={() => setMobileSidebarOpen(false)}
             className={({ isActive }) =>
               `sidebar-nav-item ${isActive ? 'active' : ''}`
             }
@@ -180,25 +215,43 @@ function Layout() {
       <div className="app-main-viewport">
         {/* Top Header Bar */}
         <header className="app-header">
-          {/* Clickable Breadcrumbs */}
-          <div className="header-breadcrumbs">
-            {breadcrumbs.map((crumb, idx) => {
-              const isLast = idx === breadcrumbs.length - 1;
-              return (
-                <span key={idx} className="breadcrumb-item-wrapper">
-                  {crumb.to && !isLast ? (
-                    <Link to={crumb.to} className="breadcrumb-link" title={`Go to ${crumb.label}`}>
-                      {crumb.label}
-                    </Link>
-                  ) : (
-                    <span className={`breadcrumb-text ${isLast ? 'active' : ''}`}>
-                      {crumb.label}
-                    </span>
-                  )}
-                  {!isLast && <span className="breadcrumb-sep">&gt;</span>}
-                </span>
-              );
-            })}
+          {/* Left Group: Hamburger Menu + Breadcrumbs */}
+          <div className="header-left-group">
+            <button
+              type="button"
+              className="mobile-menu-toggle-btn"
+              onClick={() => setMobileSidebarOpen(true)}
+              aria-label="Open Navigation Menu"
+              title="Open Menu"
+            >
+              <Menu size={22} />
+            </button>
+
+            {/* Clickable Breadcrumbs */}
+            <div className="header-breadcrumbs">
+              {breadcrumbs.map((crumb, idx) => {
+                const isLast = idx === breadcrumbs.length - 1;
+                return (
+                  <span
+                    key={idx}
+                    className={`breadcrumb-item-wrapper ${
+                      idx === 0 ? 'breadcrumb-root-crm' : ''
+                    }`}
+                  >
+                    {crumb.to && !isLast ? (
+                      <Link to={crumb.to} className="breadcrumb-link" title={`Go to ${crumb.label}`}>
+                        {crumb.label}
+                      </Link>
+                    ) : (
+                      <span className={`breadcrumb-text ${isLast ? 'active' : ''}`}>
+                        {crumb.label}
+                      </span>
+                    )}
+                    {!isLast && <span className="breadcrumb-sep">&gt;</span>}
+                  </span>
+                );
+              })}
+            </div>
           </div>
 
           {/* Right Header Controls */}
@@ -229,7 +282,7 @@ function Layout() {
                 title="Profile Menu"
               >
                 <div className="header-avatar">{avatarInitials}</div>
-                <ChevronDown size={14} color="#64748b" />
+                <ChevronDown size={14} color="#64748b" className="header-profile-chevron" />
               </div>
 
               {profileDropdownOpen && (
@@ -281,6 +334,47 @@ function Layout() {
         <main className="page-body-container">
           <Outlet />
         </main>
+
+        {/* Fixed Mobile Bottom Navigation Bar */}
+        <nav className="mobile-bottom-nav">
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) => `mobile-bottom-nav-item ${isActive ? 'active' : ''}`}
+          >
+            <LayoutDashboard size={20} />
+            <span>Dashboard</span>
+          </NavLink>
+          <NavLink
+            to="/leads"
+            className={({ isActive }) => `mobile-bottom-nav-item ${isActive ? 'active' : ''}`}
+          >
+            <Users size={20} />
+            <span>Leads</span>
+          </NavLink>
+          <NavLink
+            to="/properties"
+            className={({ isActive }) => `mobile-bottom-nav-item ${isActive ? 'active' : ''}`}
+          >
+            <Building2 size={20} />
+            <span>Properties</span>
+          </NavLink>
+          <NavLink
+            to="/bookings"
+            className={({ isActive }) => `mobile-bottom-nav-item ${isActive ? 'active' : ''}`}
+          >
+            <CalendarCheck size={20} />
+            <span>Bookings</span>
+          </NavLink>
+          <button
+            type="button"
+            className={`mobile-bottom-nav-item ${mobileSidebarOpen ? 'active' : ''}`}
+            onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+            aria-label="Toggle navigation drawer"
+          >
+            <Menu size={20} />
+            <span>Menu</span>
+          </button>
+        </nav>
       </div>
     </div>
   );

@@ -492,20 +492,55 @@
 }
 
 @media (max-width: 768px) {
-  .properties-header {
+  .properties-header-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 14px;
+    width: 100%;
   }
 
-  .prop-filters-bar {
+  .properties-title-group {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .properties-actions-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .properties-filter-card {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    box-sizing: border-box;
   }
 
   .prop-search-box {
     width: 100%;
+    box-sizing: border-box;
+  }
+
+  .prop-filter-dropdown {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .price-slider-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0;
+    gap: 12px;
+  }
+
+  .price-slider-track {
+    flex: 1;
+    min-width: 0;
   }
 
   .properties-grid {
@@ -515,6 +550,11 @@
 
   .property-card-image-box {
     height: 190px;
+  }
+
+  .property-modal-card {
+    max-width: calc(100vw - 24px);
+    margin: 0 12px;
   }
 }
 
